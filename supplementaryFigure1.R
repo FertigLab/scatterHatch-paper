@@ -90,5 +90,5 @@ desaturateColors = annotate_figure(desaturateColors, top = text_grob("D", color 
 
 ggarrange(originalColors, deuteranopeColors, protanopeColors,  desaturateColors, nrow=2, ncol = 2)
 
-ggsave("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure1a.png", width = 8, height = 8, dpi = 96, bg = "white")
+ggsave("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure1.png", width = 8, height = 8, dpi = 96, bg = "white")
 dev.off()
