@@ -33,10 +33,10 @@ h <- 3
 filePath <- "C:\\umd\\scatterHatch\\figuresPaper\\umap\\"
 dev.new(width=w, height=h, noRStudioGD = TRUE)
 lineWidth <- 0.15
-patternList <- list(list(pattern="\\", lineWidth=lineWidth*1.5), list(pattern="|", lineWidth=lineWidth), list(pattern="-", lineWidth=lineWidth, density=1/4), list(pattern="x", lineWidth=lineWidth))
+patternList <- list(list(pattern="\\", lineWidth=lineWidth*1.5), list(pattern="x", lineWidth=lineWidth), list(pattern=""), list(pattern="-", lineWidth=lineWidth, density=1/4))
 plt <- scatterHatch(umapCoords, "x", "y", factor = "cluster", legendTitle = "Cluster", pointSize=1, patternList = patternList)
-plt <- plt + theme_void() + theme(legend.position = "none") + labs(y= "", x = "")
-titles <- c("(A) Normal Vision", "(B) Deuteranopia", "   (C) Protanopia", "(D) Monochromacy")
+plt <- plt + theme_void() + labs(y= "", x = "")
+titles <- c("A", "B", "C", "D")
 perceptions <- c("origin", "deuteranope", "protanope", "desaturate")
 i <- 1
 for (i in seq(4)){
@@ -66,5 +66,5 @@ plot(NA,xlim=0:1,ylim=0:1,xaxt="n",yaxt="n",bty="n")
 rasterImage(pro,0,0,1,1)
 plot(NA,xlim=0:1,ylim=0:1,xaxt="n",yaxt="n",bty="n")
 rasterImage(des,0,0,1,1)
-dev.print(tiff, paste0(filePath, "umap1.tiff"), width=3, height=3, units="in", res=1200)
-dev.print(tiff, paste0(filePath, "umapLosRes.tiff"), width=3, height=3, units="in", res=350)
+dev.print(tiff, paste0(filePath, "umap.tiff"), width=3, height=3, units="in", res=1200)
+dev.print(tiff, paste0(filePath, "umapLowRes.tiff"), width=3, height=3, units="in", res=350)
