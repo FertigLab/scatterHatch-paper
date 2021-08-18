@@ -36,7 +36,8 @@ filePath <- "C:\\umd\\scatterHatch\\figuresPaper\\umap\\"
 dev.new(width=w, height=h, noRStudioGD = TRUE)
 lineWidth <- 0.15
 patternList <- list(list(pattern="\\", lineWidth=lineWidth*1.5), list(pattern="x", lineWidth=lineWidth), list(pattern="-", lineWidth=lineWidth, density=1/4), list(pattern=""))
-plt <- scatterHatch(umapCoords, "x", "y", factor = "cluster", legendTitle = "Cluster", pointSize=1, patternList = patternList)
+colorPalette <- c("#009E73", "#E69F00", "#F0E442", "#56B4E9")
+plt <- scatterHatch(umapCoords, "x", "y", factor = "cluster", legendTitle = "Cluster", pointSize=1, patternList = patternList, colorPalette = colorPalette)
 plt <- plt + theme_void() + labs(y= "", x = "") + theme(legend.position = "none")
 titles <- c("A", "B", "C", "D")
 perceptions <- c("origin", "deuteranope", "protanope", "desaturate")
@@ -56,12 +57,11 @@ h = 3
 bounds = umapCoords[umapCoords$x < 0.7 & umapCoords$x > -1 & umapCoords$y > -1.5 & umapCoords$y < 2,]
 lineWidth = 0.3
 patternList <- list(list(pattern="\\", lineWidth=lineWidth), list(pattern="x", lineWidth=lineWidth), list(pattern="-", lineWidth=lineWidth, density=1/4), list(pattern=""))
-colorPalette <- colorPalette[1:4]
 perceptions <- c("origin", "deuteranope", "protanope", "desaturate")
 
 dev.new(width = w, height = h, noRStudioGD = TRUE)
 plt <- scatterHatch(data = bounds, x="x", y="y", factor="cluster", pointSize=3, patternList = patternList, 
-                    colorPalette = colorPalette[1:4]) + theme_void() + labs(y= "", x = "")
+                    colorPalette = colorPalette) + theme_void() + labs(y= "", x = "")
 
 i <- 1
 for (i in seq(4)){
