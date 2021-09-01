@@ -3,8 +3,6 @@ library(ggplot2)
 
 # Supplementary Figure 4
 
-pdacFrameDir = "C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\suppFig3\\"
-
 pdacData = scatterHatch::pdacData
 pdacData$cellID = paste0('cell_', 1:nrow(pdacData))
 pdacData$Yt <- -pdacData$Yt
