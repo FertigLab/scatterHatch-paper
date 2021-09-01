@@ -24,7 +24,7 @@ w = 4
 h = 3
 dev.new(width = w, height = h, noRStudioGD = TRUE)
 patternList = list(list(pattern = "\\", density=1/4), list(pattern = "-", density = 1/4), list(pattern = "/"), list(pattern = ""))
-supplementaryFigure4 = scatterHatch(data = pdacData, x = "Xt", y = "Yt", factor = "location", legendTitle = "Tissue Type", patternList = patternList) +
+supplementaryFigure4 = scatterHatch(data = pdacData, x = "Xt", y = "Yt", color_by = "location", legendTitle = "Tissue Type", patternList = patternList) +
     theme_void()
 plot(supplementaryFigure4)
 ggsave("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure4.png", width=w, height=h, dpi = 350, bg="White")
