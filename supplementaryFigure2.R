@@ -59,7 +59,7 @@ h = 3
 dpi = 350
 
 dev.new(width=w, height=h, noRStudioGD = TRUE)
-plt <- scatterHatch(pdacData, "Xt", "Yt", factor = "frame", pointSize=1, patternList = patternList, colorPalette = colorPalette)
+plt <- scatterHatch(pdacData, "Xt", "Yt", color_by = "frame", pointSize=1, patternList = patternList, colorPalette = colorPalette)
 plt <- plt + theme_void() + labs(y= "", x = "") + theme(legend.position = "none")
 titles <- c("A", "B", "C", "D")
 perceptions <- c("origin", "deuteranope", "protanope", "desaturate")
@@ -71,11 +71,13 @@ for (i in seq(4)){
     plot(colorPerception)
     ggsave(paste0(pdacFrameDir, perceptions[i], ".png"), width=w, height=h, dpi=dpi, bg="white")
     dev.off()
-    dev.new(width=w, height=h, noRStudioGD = TRUE)
+    dev.new(width=w, height=h, noRStudioGD = TRUE, bg="white")
 }
 
 # stitching together final figure
 library("png")
+png("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure2.png", width = 2400, height = 1800, bg="white")
+
 origin <- readPNG(paste(pdacFrameDir, "origin.png", sep=""))
 deu <- readPNG(paste(pdacFrameDir, "deuteranope.png", sep=""))
 pro <- readPNG(paste(pdacFrameDir, "protanope.png", sep=""))
@@ -95,5 +97,6 @@ plot(NA,xlim=0:1,ylim=0:1,xaxt="n",yaxt="n",bty="n")
 rasterImage(pro,0,0,1,1)
 plot(NA,xlim=0:1,ylim=0:1,xaxt="n",yaxt="n",bty="n")
 rasterImage(des,0,0,1,1)
-
-dev.print(png, "C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure2.png", width = 2400, height = 1800)
+dev.off()
+dev.off()
+#dev.print(png, "C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure2.png", width = 2400, height = 1800)
