@@ -3,7 +3,7 @@ library(ggplot2)
 
 # Supplementary Figure 4
 
-pdacData = scatterHatch::pdacData
+data("pdacData")
 pdacData$cellID = paste0('cell_', 1:nrow(pdacData))
 pdacData$Yt <- -pdacData$Yt
 pancreas_frames = c(1:6, 27:31, 15:19, 40:44)
@@ -20,8 +20,9 @@ pdacData$location = sapply(pdacData$frame, annotateLocation)
 
 w = 4
 h = 3
+lineWidth = 0.2
 dev.new(width = w, height = h, noRStudioGD = TRUE)
-patternList = list(list(pattern = "\\", density=1/4), list(pattern = "-", density = 1/4), list(pattern = "/"), list(pattern = ""))
+patternList = list(list(pattern = "\\", density=0.7, lineWidth = lineWidth), list(pattern = "-", density = 0.7, lineWidth = lineWidth), list(pattern = "/", lineWidth = lineWidth, density=0.7), list(pattern = "", lineWidth = lineWidth))
 supplementaryFigure4 = scatterHatch(data = pdacData, x = "Xt", y = "Yt", color_by = "location", legendTitle = "Tissue Type", patternList = patternList) +
     theme_void()
 plot(supplementaryFigure4)

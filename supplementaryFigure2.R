@@ -8,7 +8,7 @@ library(scatterHatch)
 
 pdacFrameDir = "C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\suppFig2\\"
 
-pdacData = scatterHatch::pdacData
+data(pdacData)
 pdacData$cellID = paste0('cell_', 1:nrow(pdacData))
 pdacData$Yt <- -pdacData$Yt
 pancreas_frames = c(1:6, 27:31, 15:19, 40:44)
@@ -50,7 +50,7 @@ patterns = completePatterns
 patternList = vector(mode = "list", length = numberOfFrames) # initializing patternList
 patternList = lapply(1:numberOfFrames, function(i){
     lineType = "solid"
-    patternList[[i]] = list(pattern = patterns[i], lineWidth = 0.15, lineType = lineType)
+    patternList[[i]] = list(pattern = patterns[i], lineWidth = 0.15, lineType = lineType, density=0.5)
 })
 
 # Creating PDAC by frame
