@@ -1,7 +1,7 @@
 library(scatterHatch)
 library(ggplot2)
 
-# Supplementary Figure 5
+# Figure 4
 data("pdacData")
 pdacData$cellID = paste0('cell_', 1:nrow(pdacData))
 pdacData$Yt <- -pdacData$Yt
@@ -17,12 +17,15 @@ annotateLocation <- function(frame){
 pdacData$location = sapply(pdacData$frame, annotateLocation)
 
 
-w = 4
-h = 3
+w = 7
+h = 4
 dev.new(width = w, height = h, noRStudioGD = TRUE)
-patternList = list(list(pattern = "\\", lineColor = "white", density=1/3, lineType = "solid"), list(pattern = "x", density = 1/2, angle = c(45, 135, 90), lineWidth = 0.2, lineType = "solid", lineColor = "black"), list(pattern = "/", lineWidth = 0.2, lineType = "dashed", lineColor = "black", density=0.4), list(pattern = ""))
+patternList = list(list(pattern = "-", lineColor = "purple", density = 1/2, lineWidth = 0.2),
+                   list(pattern = "\\", lineColor = "white", density=1/3, lineType = "solid"), 
+                   list(pattern = "/", lineWidth = 0.2, lineType = "dotted", lineColor = "black", density=0.4), 
+                   list(pattern = "x", angle = c(45, 90, 135), lineWidth = 0.1, density=1/2))
 supplementaryFigure5 = scatterHatch(data = pdacData, x = "Xt", y = "Yt", color_by = "location", legendTitle = "Tissue Type", patternList = patternList) +
-    theme_void()
+    ggplot2::theme_void()
 plot(supplementaryFigure5)
-ggsave("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure5.png", width=w, height=h, dpi = 350, bg="White")
+ggplot2::ggsave("C:\\umd\\scatterHatch\\figuresPaper\\supplementaryFigures\\Supplementary_Figure5.pdf", width=w, height=h, bg="White")
 dev.off()
