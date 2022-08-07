@@ -6,7 +6,7 @@ library(colorBlindness)
 library(ggpubr)
 set.seed(156)
 
-pdacData <- read.csv("C:\\umd\\summer 2020\\spatial-datasets-master\\spatial-datasets-master\\data\\2018_CyCIF_PDAC\\rawdata_Figure78_PDAC\\rawdata_Figure7&8_PDAC.csv")
+pdacData <- read.csv("C://umd//scatterHatch//scatterHatch-paper//rawdata_Figure7&8_PDAC.csv")
 pdacData$cellID = paste0('cell_', 1:nrow(pdacData))
 pdacData$Yt <- -pdacData$Yt
 pancreas_frames = c(1:6, 27:31, 15:19, 40:44)
